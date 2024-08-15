@@ -12,9 +12,9 @@ const CustomDrawerContent = (props) => {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.item}
-        onPress={() => props.navigation.navigate('Details')}
+        onPress={() => props.navigation.navigate('Previsão do tempo')}
       >
-        <Text style={styles.itemText}>Details</Text>
+        <Text style={styles.itemText}>Previsão do tempo</Text>
       </TouchableOpacity>
     </View>
   );
