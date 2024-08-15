@@ -10,7 +10,7 @@ const GetWeather = () => {
   },[])
   
   const getCurrentWeather = () => {
-    const URL = 'https://api.hgbrasil.com/weather?key=86dc17f7'
+    const URL = 'https://api.hgbrasil.com/weather?keyc3940b34 '
 
     fetch(URL).then(res => (
       res.json()
@@ -21,8 +21,9 @@ const GetWeather = () => {
   };
   return (
     <View>
-      <FlatList data={weather} renderItem={({ item }) => <View>
-          <text>{item.city}</text>
+      <Text style={styles.para}>TESTE</Text>
+      <FlatList data={weather} renderItem={() => <View>
+          <text>{city}</text>
       </View>}/>
     </View>
   );
