@@ -3,28 +3,43 @@ import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 
 const GetWeather = () => {
+  const [weather, setWeather] = useState(null);
 
-  const [weather, setWather] = useState([]);
   useEffect(() => {
     getCurrentWeather();
-  },[])
+  }, []);
   
   const getCurrentWeather = () => {
-    const URL = 'https://api.hgbrasil.com/weather?keyc3940b34 '
+    const URL = 'https://api.hgbrasil.com/weather?key=86dc17f7';
 
-    fetch(URL).then(res => (
-      res.json()
-    )).then(data =>{
-      setWather(data)
-      console.log(data)
-    })
+    fetch(URL)
+      .then(res => res.json())
+      .then(data => {
+        setWeather(data.results);
+        console.log(data.results);
+      })
+      .catch(error => console.error(error));
   };
+
+  if (!weather) {
+    return (
+      <View style={styles.container}>
+        <Text>Carregando...</Text>
+      </View>
+    );
+  }
+
   return (
-    <View>
-      <Text style={styles.para}>TESTE</Text>
-      <FlatList data={weather} renderItem={() => <View>
-          <text>{city}</text>
-      </View>}/>
+    <View style={styles.container}>
+      <FlatList
+        data={weather} 
+        keyExtractor={(item) => item.id.toString()} 
+        renderItem={({ item }) => (
+          <View>
+            <Text>{item.city}</Text> 
+          </View>
+        )}
+      />
     </View>
   );
 };
