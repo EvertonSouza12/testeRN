@@ -9,17 +9,19 @@ const GetWeather = () => {
     getCurrentWeather();
   }, []);
   
-  const getCurrentWeather = () => {
+  const getCurrentWeather = async () => {
     const URL = 'https://api.hgbrasil.com/weather?key=86dc17f7';
 
-    fetch(URL)
-      .then(res => res.json())
-      .then(data => {
-        setWeather(data.results);
-        console.log(data.results);
-      })
-      .catch(error => console.error(error));
+    try {
+      const res = await fetch(URL);
+      const json = await res.json();
+      setWeather(json.city);
+      console.log(res)
+    }catch (error){
+      console.log(error)
+    }
   };
+ 
 
   if (!weather) {
     return (
