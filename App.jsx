@@ -27,8 +27,8 @@ export default function App() {
           headerTintColor: '#fff',
         }}
       >
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Previsão do tempo" component={WeatherScreen} />
+      <Drawer.Screen name="Home" component={HomeScreen} />
+      <Drawer.Screen name="Previsão do tempo" component={WeatherScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
