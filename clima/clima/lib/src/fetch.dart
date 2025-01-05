@@ -72,11 +72,17 @@ class _FetchScreenState extends State<FetchScreen> {
           future: futureAlbum,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return Text(snapshot.data!.title);
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('ID: ${snapshot.data!.id}'),
+                  Text('User ID: ${snapshot.data!.userId}'),
+                  Text('Title: ${snapshot.data!.title}'),
+                ],
+                );
             } else if (snapshot.hasError) {
               return Text('${snapshot.error}');
             }
-
             // By default, show a loading spinner.
             return const CircularProgressIndicator();
           },
